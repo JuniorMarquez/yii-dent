@@ -3,7 +3,14 @@ app.controller('XeditableCtrl', ['$scope', '$filter', '$http', 'editableOptions'
     editableThemes.bs3.inputClass = 'input-sm';
     editableThemes.bs3.buttonsClass = 'btn-sm';
     editableOptions.theme = 'bs3';
+$scope.app={
+  color:{azulOscuro: '#58dedf'
+  }
+};
 
+
+
+'#3a3f51';
     $scope.html5 = {
       email: 'email@example.com',
       tel: '123-45-67',
@@ -20,22 +27,30 @@ app.controller('XeditableCtrl', ['$scope', '$filter', '$http', 'editableOptions'
     };
 
     $scope.user = {
+      nombres:'nombres',
+      apellidos:'apellidos',
     	name: 'awesome',
-    	desc: 'Awesome user \ndescription!',
-      status: 2,
-      agenda: 1,
-      remember: false
+    	desc: 'Dirección',
+      nacionalidad:'V',
+      status: 1,
+      sexo: 'M',
+      remember: false,
+      profesion: 'Profesion'
     }; 
 
     $scope.statuses = [
-      {value: 1, text: 'status1'},
-      {value: 2, text: 'status2'},
-      {value: 3, text: 'status3'}
+      {value: 1, text: 'Activo'},
+      {value: 2, text: 'Inactivo'},
+      {value: 3, text: 'Archivado'}
+    ];
+       $scope.nacionalidades = [
+      {value: 'V', text: 'Venezolano'},
+      {value: 'E', text: 'Extranjero'}
     ];
 
-    $scope.agenda = [
-      {value: 1, text: 'male'},
-      {value: 2, text: 'female'}
+    $scope.sexos = [
+      {value: 'H', text: 'hombre'},
+      {value: 'M', text: 'mujer'}
     ];
 
     $scope.showStatus = function() {
@@ -43,9 +58,9 @@ app.controller('XeditableCtrl', ['$scope', '$filter', '$http', 'editableOptions'
       return ($scope.user.status && selected.length) ? selected[0].text : 'Not set';
     };
 
-    $scope.showAgenda = function() {
-      var selected = $filter('filter')($scope.agenda, {value: $scope.user.agenda});
-      return ($scope.user.agenda && selected.length) ? selected[0].text : 'Not set';
+    $scope.showSexo = function() {
+      var selected = $filter('filter')($scope.sexos, {value: $scope.user.sexo});
+      return ($scope.user.sexo && selected.length) ? selected[0].text : 'Not set';
     };
 
     // editable table
@@ -75,6 +90,13 @@ app.controller('XeditableCtrl', ['$scope', '$filter', '$http', 'editableOptions'
       var selected = [];
       if(user && user.status) {
         selected = $filter('filter')($scope.statuses, {value: user.status});
+      }
+      return selected.length ? selected[0].text : 'Not set';
+    };
+       $scope.showNacionalidad = function(user) {
+      var selected = [];
+      if(user && user.nacionalidad) {
+        selected = $filter('filter')($scope.nacionalidades, {value: user.nacionalidad});
       }
       return selected.length ? selected[0].text : 'Not set';
     };

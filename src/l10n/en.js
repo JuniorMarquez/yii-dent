@@ -16,8 +16,8 @@
 "aside" : {
   "nav" : {
     "HEADER" : "Navigation",
-    "DASHBOARD" : "Dashboard",
-    "ODONTOLOGOS" : "Odontólogos",
+    "DASHBOARD" : "Inicio",
+    "ODONTOLOGOS" : "Ajustes",
     "CALENDAR" : "Agenda",
     "EMAIL" : "Pacientes",
     "WIDGETS" : "Widgets",

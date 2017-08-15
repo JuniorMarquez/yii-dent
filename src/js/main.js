@@ -23,7 +23,8 @@ angular.module('app')
           danger:  '#f05050',
           light:   '#e8eff0',
           dark:    '#3a3f51',
-          black:   '#1c2b36'
+          black:   '#1c2b36',
+          azulOscuro: '#3a3f51'
         },
         settings: {
           themeID: 1,

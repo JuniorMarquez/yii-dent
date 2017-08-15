@@ -290,7 +290,9 @@ a.list-group-item.hover {
 
 .list-group-sp .list-group-item {
   margin-bottom: 5px;
-  border-radius: 3px;
+  border-radius: 16px;
+  box-shadow: 5px 5px 10px rgba(3, 0, 0, 0.68);
+
 }
 
 .list-group-item > .badge {
@@ -634,7 +636,7 @@ pre {
 }
 
 .modal-backdrop.in {
-  opacity: 0.8;
+  opacity: 3.8;
   filter: alpha(opacity=80);
 }
 
@@ -1250,6 +1252,9 @@ html.bg {
   text-transform: none;
   -webkit-transition: background-color 0.2s ease-in-out 0s;
           transition: background-color 0.2s ease-in-out 0s;
+          border-radius: 45px;
+          /*box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.22);*/
+          /*sombra opciones*/
 }
 
 .navi ul.nav li a .badge,
@@ -1802,8 +1807,8 @@ html.bg {
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: #58666e !important;
-  background-color: #edf1f2;
-  border-color: #c7d3d6;
+  background-color: #58dedf;
+  border-color: #58dedf;
 }
 
 .btn-default:active,
@@ -2239,7 +2244,7 @@ fieldset[disabled] .btn-black.active {
 
 .list-icon i {
   display: inline-block;
-  width: 40px;
+  width: 60px;
   margin: 0;
   text-align: center;
   vertical-align: middle;
@@ -2248,12 +2253,13 @@ fieldset[disabled] .btn-black.active {
 }
 
 .list-icon div {
-  line-height: 40px;
+  line-height: 46px;
   white-space: nowrap;
+  font-size: 46px;
 }
 
 .list-icon div:hover i {
-  font-size: 26px;
+  font-size: 76px;
 }
 
 .settings {
@@ -2972,6 +2978,12 @@ fieldset[disabled] .i-checks input + i:before {
   background-color: #fff;
 }
 
+.bg-light2 {
+  color: #e4eaec;
+  background-color: #e4eaec;
+}
+
+
 .bg-light.lt,
 .bg-light .lt {
   background-color: #f3f5f6;
@@ -2984,7 +2996,7 @@ fieldset[disabled] .i-checks input + i:before {
 
 .bg-light.dk,
 .bg-light .dk {
-  background-color: #e4eaec;
+  background-color: #f0f3f4;
 }
 
 .bg-light.dker,
@@ -3106,6 +3118,11 @@ fieldset[disabled] .i-checks input + i:before {
   background-color: #b761a0;
   /*morado*/
 }
+.bg-azul {
+  color: #3a3f51;
+  background-color: #3a3f51;
+  /*morado*/
+}
 
 .bg-black.lt,
 .bg-black .lt {
@@ -3148,8 +3165,9 @@ fieldset[disabled] .i-checks input + i:before {
 .bg-black .nav > li:hover > a,
 .bg-black .nav > li:focus > a,
 .bg-black .nav > li.active > a {
-  color: #452a48;
-  background-color: #58dedf;
+  color: #64feff;
+  /*background-color: #58dedf;*/
+  /*color de fondo opcion*/
 }
 
 .bg-black .nav > li > a {
@@ -3158,7 +3176,7 @@ fieldset[disabled] .i-checks input + i:before {
 
 .bg-black .nav > li > a:hover,
 .bg-black .nav > li > a:focus {
-  background-color: #58dedf;
+  background-color: #d4e1e133;
 }
 
 .bg-black .nav .open > a {
@@ -3972,9 +3990,12 @@ a.text-#000000:hover {
 .text-black {
   color: #000;
 }
-
+.text-gray{
+  color: #d7dde0;
+}
 .text-muted {
   color: #98a6ad;
+
 }
 
 .bg {

@@ -1,5 +1,11 @@
-'use strict';
 
+'use strict';
+app.factory('MyService',function(){
+return {
+    data: {}
+  };
+
+});
 /**
  * Config for the router
  */
@@ -31,6 +37,27 @@ angular.module('app')
                   url: '/app',
                   templateUrl: layout
               })
+
+               .state('app.pacientes', {
+                  url: '/pacientes',
+                  templateUrl: 'tpl/app_pacientes.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad ){
+                          return $ocLazyLoad.load(['ui.select','toaster','ngGrid','xeditable']).then(
+                              function(){
+                                  return $ocLazyLoad.load([
+                                    'js/controllers/chart.js',
+                                                  'js/controllers/bootstrap.js',
+                                                  'js/app/pacientes/pacientes.js',
+                                                  'js/controllers/xeditable.js',
+                                                  'js/controllers/chart.js'
+                                                  ]);
+                              }
+                          );
+                      }]
+                  }
+              }) 
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',
                   templateUrl: 'tpl/app_dashboard_v1.html',

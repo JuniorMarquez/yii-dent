@@ -1,0 +1,148 @@
+ <style>
+     
+        .app {  background-color: #3a3f51;}
+    </style>
+
+<script type="text/ng-template" id="modalNuevoPaciente.html">
+  <div ng-include="'tpl/modalNuevoPaciente.html'"></div>
+</script>
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+  <!-- main -->
+  <div class="col">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md" style="background-color: #3a3f51;
+    border-color: #3a3f51;">
+      <div class="row">
+        <div class="col-sm-3 col-xs-6">
+          <h1 class="m-n font-thin h3 text-white">Pacientes</h1>
+          <small class="text-muted">Que felízmente integran mi consulta :)</small>
+        </div>
+
+        <div class="col-sm-9 text-right hidden-xs">
+        <div class="col-sm-6 text-left text-white" style="font-size: 18px;">
+          <p></p>
+        A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+        </div>
+ <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Paciente, C.I.">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </div>
+        </form>
+ 
+ <div class="col-xs-1" ng-controller="pacientesCtrl">
+   <button class="btn btn-rounded btn-lg btn-icon btn-default" style="
+ vertical-align: top;
+ box-shadow: 5px 5px 10px rgba(3, 0, 0, 0.68);" ng-click="openNuevoPaciente()"><i class="fa fa-plus"></i></button>
+ </div>
+          <div class="inline m-r text-left">
+            <div class="m-b-xs text-white">1290 <span class="text-muted">Pacientes</span></div>
+            <div class="m-b-xs text-white">1200 <span class="text-muted">Activos</span></div>
+            <div class="m-b-xs text-white">190 <span class="text-muted">Inactivos</span></div>
+     
+          </div>
+     
+        </div>
+      </div>
+    </div>
+    <!-- / main header -->
+    <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+     
+      <!-- / tasks -->
+
+      <!-- tasks -->
+      <div class="row">
+     
+        <div class="col-md-6 col-md-offset-1">            
+          <div class="list-group list-group-lg list-group-sp">
+            <a herf class="list-group-item clearfix">
+              <span class="pull-left thumb-sm avatar m-r">
+                <img src="img/a4.jpg" alt="...">
+                <i class="on b-white right"></i>
+              </span>
+              <span class="clear h4">
+                <span>Chris Fox</span>
+<p></p>
+                Ultima Consulta: 
+<span class="text-muted">24 de junio de 2016 (hace 420 días)</span>
+                
+                <!-- <small class="text-muted clear text-ellipsis"></small> -->
+                <i class="fa fa-trash-o pull-right"></i>
+                <i class="fa fa-edit pull-right"></i>
+               
+
+              </span>
+            </a>
+            <a herf class="list-group-item clearfix">
+              <span class="pull-left thumb-sm avatar m-r">
+                <img src="img/a5.jpg" alt="...">
+                <i class="on b-white right"></i>
+              </span>
+              <span class="clear h4">
+                <span>Amanda Conlan</span>
+               <p></p>
+                Ultima Consulta: 
+<span class="text-muted">24 de junio de 2016 (hace 32 días)</span>
+                
+                <!-- <small class="text-muted clear text-ellipsis"></small> -->
+                <i class="fa fa-trash-o pull-right"></i>
+                <i class="fa fa-edit pull-right"></i>
+               
+
+              </span>
+            </a>
+            <a herf class="list-group-item clearfix">
+              <span class="pull-left thumb-sm avatar m-r">
+                <img src="img/a6.jpg" alt="...">
+                <i class="busy b-white right"></i>
+              </span>
+              <span class="clear h4">
+                <span>Dan Doorack</span>
+                <p></p>
+                Ultima Consulta: 
+<span class="text-muted">24 de junio de 2016 (hace 60 días)</span>
+                
+                <!-- <small class="text-muted clear text-ellipsis"></small> -->
+                <i class="fa fa-trash-o pull-right"></i>
+                <i class="fa fa-edit pull-right"></i>
+               
+
+              </span>
+            </a>
+            <a herf class="list-group-item clearfix">
+              <span class="pull-left thumb-sm avatar m-r">
+                <img src="img/a7.jpg" alt="...">
+                <i class="busy b-white right"></i>
+              </span>
+              <span class="clear h4">
+                <span>Lauren Taylor</span>
+              <p></p>
+                Ultima Consulta: 
+<span class="text-muted">24 de junio de 2016 (hace 20 días)</span>
+                
+                <!-- <small class="text-muted clear text-ellipsis"></small> -->
+                <i class="fa fa-trash-o pull-right"></i>
+                <i class="fa fa-edit pull-right"></i>
+               
+
+              </span>
+            </a>
+           
+          </div>
+        </div>
+      </div>
+      <!-- / tasks -->
+    </div>
+  </div>
+  <!-- / main -->
+  <!-- right col -->
+ 
+  <!-- / right col -->
+</div>

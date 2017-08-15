@@ -1,16 +1,17 @@
 <div ng-controller="FullcalendarCtrl">
-  <div class="wrapper-md bg-light b-b">
-    <button type="button" class="btn btn-default btn-addon pull-right m-t-n-xs" ui-toggle-class="show" target="#aside">
-      <i class="fa fa-bars"></i> Listado
-    </button>
+<!--   <div class="wrapper-md bg-light b-b">
+    
     <h1 class="m-n font-thin h3">Agenda</h1>
-  </div>
+  </div> -->
   <div class="hbox hbox-auto-xs hbox-auto-sm">
     <div class="col wrapper-md">
       <div class="clearfix m-b">
         <button type="button" tooltip="Double click on calendar day to create event" class="btn btn-sm btn-primary btn-addon" ng-click="addEvent()">
           <i class="fa fa-plus"></i>Agregar
         </button>
+        <button type="button" class="btn btn-default btn-addon pull-right m-t-n-xs" ui-toggle-class="show" target="#aside">
+      <i class="fa fa-bars"></i> Listado
+    </button>
         <div class="pull-right">
           <button type="button" class="btn btn-sm btn-default" ng-click="today()">hoy</button>
           <div class="btn-group m-l-xs">
