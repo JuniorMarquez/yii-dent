@@ -37,6 +37,21 @@ $scope.app={
       remember: false,
       profesion: 'Profesion'
     }; 
+    $scope.cuenta = {
+      nombreRazon:'Clinica / Consultorio',
+      nRegistro:'J-00000000-0',
+      telefono: '(000)-000-0000',
+      movil: '(000)-000-0000',
+      email: 'email@email.com',
+      // telefono: 'awesome',
+      direccion: 'Dirección',
+      desc: 'Dirección',
+      nacionalidad:'V',
+      status: 1,
+      identificador: 'RIF',
+      remember: false,
+      profesion: 'Profesion'
+    }; 
 
     $scope.statuses = [
       {value: 1, text: 'Activo'},
@@ -52,6 +67,11 @@ $scope.app={
       {value: 'H', text: 'hombre'},
       {value: 'M', text: 'mujer'}
     ];
+     $scope.identificadores = [
+      {value: 'RIF', text: 'Registro de Información Fiscal'},
+      {value: 'RUF', text: 'Registro Único Federado'},
+      {value: 'OTRO', text: 'Otro'}
+    ];
 
     $scope.showStatus = function() {
       var selected = $filter('filter')($scope.statuses, {value: $scope.user.status});
@@ -61,6 +81,10 @@ $scope.app={
     $scope.showSexo = function() {
       var selected = $filter('filter')($scope.sexos, {value: $scope.user.sexo});
       return ($scope.user.sexo && selected.length) ? selected[0].text : 'Not set';
+    };
+     $scope.showIdentificadores = function() {
+      var selected = $filter('filter')($scope.identificadores, {value: $scope.cuenta.identificador});
+      return ($scope.cuenta.identificador && selected.length) ? selected[0].text : 'Not set';
     };
 
     // editable table

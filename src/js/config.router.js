@@ -58,6 +58,26 @@ angular.module('app')
                       }]
                   }
               }) 
+                .state('app.ajustes', {
+                  url: '/ajustes',
+                  templateUrl: 'tpl/app_ajustes.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad ){
+                          return $ocLazyLoad.load(['ui.select','toaster','ngGrid','xeditable']).then(
+                              function(){
+                                  return $ocLazyLoad.load([
+                                    'js/controllers/chart.js',
+                                                  'js/controllers/bootstrap.js',
+                                                  'js/app/ajustes/ajustes.js',
+                                                  'js/controllers/xeditable.js',
+                                                  'js/controllers/chart.js'
+                                                  ]);
+                              }
+                          );
+                      }]
+                  }
+              }) 
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',
                   templateUrl: 'tpl/app_dashboard_v1.html',
