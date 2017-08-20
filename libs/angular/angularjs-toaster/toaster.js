@@ -31,7 +31,7 @@
             'close-button': false,
             'close-html': '<button class="toast-close-button" type="button">&times;</button>',
             'newest-on-top': true, 
-            //'fade-in': 1000,            // done in css
+            'fade-in': 1000,            // done in css
             //'on-fade-in': undefined,    // not implemented
             //'fade-out': 1000,           // done in css
             //'on-fade-out': undefined,   // not implemented
@@ -44,6 +44,7 @@
                 success: 'toast-success',
                 warning: 'toast-warning'
             },
+            
             'body-output-type': '', // Options: '', 'trustedHtml', 'template', 'templateWithData', 'directive'
             'body-template': 'toasterBodyTmpl.html',
             'icon-class': 'toast-info',

@@ -8,6 +8,18 @@ $scope.app={
   }
 };
 
+ $scope.today = function() {
+        $scope.filter = '';
+      var bandera2="";
+      var bandera ="";
+      $scope.dt = new Date();
+      bandera = $scope.dt;
+
+     bandera2= $filter('date')(new Date(bandera),'dd/MM/yyyy')
+    $scope.dt=bandera2;
+    };
+    $scope.today();
+
 
 
 '#3a3f51';
@@ -27,15 +39,17 @@ $scope.app={
     };
 
     $scope.user = {
-      nombres:'nombres',
-      apellidos:'apellidos',
-    	name: 'awesome',
-    	desc: 'Dirección',
-      nacionalidad:'V',
-      status: 1,
-      sexo: 'M',
-      remember: false,
-      profesion: 'Profesion'
+     //  nombres:'nombres',
+     //  apellidos:'apellidos',
+    	// name: 'awesome',
+    	// desc: 'Dirección',
+     //  nacionalidad:'V',
+     //  status: 1,
+     //  fechaNacimiento:'00/00/0000',
+     //  identificacion: 00000000,
+     //  sexo: 'M',
+     //  remember: false,
+     //  profesion: 'Profesion'
     }; 
     $scope.cuenta = {
       nombreRazon:'Clinica / Consultorio',
@@ -75,16 +89,20 @@ $scope.app={
 
     $scope.showStatus = function() {
       var selected = $filter('filter')($scope.statuses, {value: $scope.user.status});
-      return ($scope.user.status && selected.length) ? selected[0].text : 'Not set';
+      return ($scope.user.status && selected.length) ? selected[0].text : 'Seleccione';
     };
 
     $scope.showSexo = function() {
       var selected = $filter('filter')($scope.sexos, {value: $scope.user.sexo});
-      return ($scope.user.sexo && selected.length) ? selected[0].text : 'Not set';
+      return ($scope.user.sexo && selected.length) ? selected[0].text : 'Seleccione';
+    };
+    $scope.showNacionalidad = function() {
+      var selected = $filter('filter')($scope.nacionalidades, {value: $scope.user.nacionalidad});
+      return ($scope.user.nacionalidad && selected.length) ? selected[0].text : 'Seleccione';
     };
      $scope.showIdentificadores = function() {
       var selected = $filter('filter')($scope.identificadores, {value: $scope.cuenta.identificador});
-      return ($scope.cuenta.identificador && selected.length) ? selected[0].text : 'Not set';
+      return ($scope.cuenta.identificador && selected.length) ? selected[0].text : 'Seleccione';
     };
 
     // editable table
@@ -117,13 +135,7 @@ $scope.app={
       }
       return selected.length ? selected[0].text : 'Not set';
     };
-       $scope.showNacionalidad = function(user) {
-      var selected = [];
-      if(user && user.nacionalidad) {
-        selected = $filter('filter')($scope.nacionalidades, {value: user.nacionalidad});
-      }
-      return selected.length ? selected[0].text : 'Not set';
-    };
+ 
 
     $scope.checkName = function(data, id) {
       if (id === 2 && data !== 'awesome') {

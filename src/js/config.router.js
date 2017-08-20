@@ -292,11 +292,33 @@ angular.module('app')
                   url: '/access',
                   template: '<div ui-view class="fade-in-right-big smooth"></div>'
               })
+              // .state('access.signin', {
+              //     url: '/signin',
+              //     templateUrl: 'tpl/page_signin.html',
+              //     resolve: load( ['js/controllers/signin.js'] )
+              // })
+
+
               .state('access.signin', {
                   url: '/signin',
                   templateUrl: 'tpl/page_signin.html',
-                  resolve: load( ['js/controllers/signin.js'] )
+                  resolve: {
+
+                    deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad ){
+                          return $ocLazyLoad.load(['ui.select','toaster']).then(
+                              function(){
+                                return $ocLazyLoad.load( ['js/controllers/signin.js',
+                                  'js/controllers/chart.js',
+                                'js/controllers/bootstrap.js'
+                                                  ]);
+                              }
+                          );
+                      }]
+                     
+                  }
               })
+
               .state('access.signup', {
                   url: '/signup',
                   templateUrl: 'tpl/page_signup.html',

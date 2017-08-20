@@ -94,11 +94,35 @@
     };
   }])
   ; 
-  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', 'toaster','$http', 'MyService',function($scope, $modalInstance, items, toaster,$http,MyService) {
     $scope.items = items;
     $scope.selected = {
       item: $scope.items[0]
     };
+
+  $scope.toaster = {
+    type: 'success',
+    text: 'Paciente agregado con exito',
+    title: 'Exito'
+  };
+
+
+
+ $scope.pop = function(){
+    toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+  };
+
+$scope.guardar=function(item){
+  var paciente = item;
+  paciente.idUsuarioCuenta=MyService.data.idUsuarioCuenta;
+ $http.post('http://54.202.62.62:1349/paciente/', paciente).success(function(data){
+          $scope.pop();
+          // $state.go('apps.capgestionar'); 
+      });
+$modalInstance.close($scope.selected.item);
+};
+
+
 
     $scope.ok = function () {
       $modalInstance.close($scope.selected.item);
@@ -236,9 +260,16 @@
     };
   }])
   ; 
-  app.controller('DatepickerDemoCtrl', ['$scope', function($scope) {
+  app.controller('DatepickerDemoCtrl', ['$scope', '$filter',function($scope,$filter) {
     $scope.today = function() {
+        $scope.filter = '';
+      var bandera2="";
+      var bandera ="";
       $scope.dt = new Date();
+      bandera = $scope.dt;
+
+     bandera2= $filter('date')(new Date(bandera),'dd/MM/yyyy')
+    $scope.dt=bandera2;
     };
     $scope.today();
 
@@ -270,8 +301,8 @@
     };
 
     $scope.initDate = new Date('2016-15-20');
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+    $scope.formats = ['dd-MMMM-yyyy', 'dd/MM/yyyy', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[1];
   }])
   ; 
   app.controller('TimepickerDemoCtrl', ['$scope', function($scope) {

@@ -43,7 +43,7 @@
               </div>
               <br/>
               <div class="h4 m-t m-b-xs" style="font-size: 20px;">{{user.nombres}} {{user.apellidos}}</div>
-              <small class="text-muted m-b">{{user.profesion}}</small>
+              <!-- <small class="text-muted m-b">{{user.profesion}}</small> -->
             </div>                      
           </div>
         </div>
@@ -76,7 +76,7 @@
               <div class="col-sm-4">
                 <p class="form-control-static">
                   <a editable-select="user.nacionalidad"  style="font-size: 20px;" e-ng-options="s.value as s.text for s in nacionalidades">
-                    {{ showNacionalidad(user) }}
+                    {{ showNacionalidad(user) || 'Seleccione' }}
                   </a>
                 </p>
               </div>
@@ -85,7 +85,7 @@
               <label class="col-sm-5 control-label" style="font-size: 20px;">Identificación:</label>
               <div class="col-sm-4">
                <p class="form-control-static">
-                 <a editable-number="user.identificacion" e-min="18">{{ user.identificacion || 'vacio' }}
+                 <a editable-number="user.identificacion" e-min="18" style="font-size: 20px;">{{ user.identificacion || 'vacio' }}
                  </a>
 
                  </p> 
@@ -97,7 +97,7 @@
               <div class="col-sm-6">
                 <p class="form-control-static">
                   <a editable-radiolist="user.sexo" e-ng-options="s.value as s.text for s in sexos"  style="font-size: 20px;">
-                    {{ showSexo() }}
+                    {{ showSexo() || 'Seleccione'}}
                   </a>
                 </p>
               </div>
@@ -111,9 +111,10 @@
               <label class="col-sm-5 control-label" style="font-size: 20px;">Fecha de nacimiento:</label>
               <div class="col-sm-4" ng-controller="DatepickerDemoCtrl">
                     <p class="input-group">
-              <input type="text" class="form-control no-border" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default no-border" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              
+              <input type="text" class="form-control " style="color: #337ab7; font-size: 18px;" datepicker-popup="{{format}}" ng-model="user.fechaNacimiento" is-open="opened"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+             <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-rounded " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </p>
               </div>
@@ -143,7 +144,7 @@
               <label class="col-sm-5 control-label" style="font-size: 20px;">Teléfono:</label>
               <div class="col-sm-4">
                 <p class="form-control-static">
-                 <a editable-tel="user.telefono" e-pattern="\d{3}\-\d{2}\-\d{2}" e-title="xxx-xx-xx">{{ user.telefono || 'error' }}</a>
+                 <a editable-tel="user.telefono" e-pattern="\d{3}\-\d{7}" e-title="xxx-xxxxxxx" style="font-size: 20px;">{{ user.telefono || 'error' }}</a>
                 </p>
               </div>
             </div>
@@ -153,7 +154,7 @@
               <label class="col-sm-4 control-label" style="font-size: 20px;">Celular:</label>
               <div class="col-sm-4">
                 <p class="form-control-static">
-                 <a editable-tel="user.movil" e-pattern="\d{3}\-\d{7}" e-title="xxx-xxxxxxx">{{ user.movil || 'error' }}</a>
+                 <a editable-tel="user.movil" e-pattern="\d{3}\-\d{7}" e-title="xxx-xxxxxxx" style="font-size: 20px;">{{ user.movil || 'error' }}</a>
                 </p>
               </div>
             </div>
@@ -163,7 +164,7 @@
               <label class="col-sm-5 control-label" style="font-size: 20px;">Email:</label>
               <div class="col-sm-4">
                 <p class="form-control-static">
-               <a editable-email="user.email">{{ user.email || 'vacio' }}</a>
+               <a editable-email="user.email" style="font-size: 20px;">{{ user.email || 'vacio' }}</a>
                 </p>
               </div>
             </div>
@@ -197,6 +198,6 @@
 
  <button class="btn btn-rounded btn-lg btn-icon btn-default2" style="
  vertical-align: top;
- box-shadow:5px 5px 10px rgba(99, 210, 219, 0.5);" ng-click="okAprobacion()"><i class=" icon-check fa-2x"></i></button>
+ box-shadow:5px 5px 10px rgba(99, 210, 219, 0.5);" ng-click="guardar(user)"><i class=" icon-check fa-2x"></i></button>
     <!-- <button class="btn btn-primary" ng-click="okAprobacion(item)"></button> -->
 </div>

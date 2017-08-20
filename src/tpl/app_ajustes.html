@@ -1,57 +1,73 @@
- <style>
-     
-        /*.app {  background-color: #3a3f51;}*/
-    </style>
-
+<style>
+  /*.app {  background-color: #3a3f51;}*/
+</style>
 <script type="text/ng-template" id="modalNuevoPaciente.html">
   <div ng-include="'tpl/modalNuevoPaciente.html'"></div>
 </script>
 <div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
     app.settings.asideFolded = false; 
-    app.settings.asideDock = false;
-  ">
-  <!-- main -->
+    app.settings.asideDock = false;">
+
   <div class="col" >
-    <!-- main header -->
-    <div class="bg-light lter b-b wrapper-md" ;
-    >
+    <div class="bg-light lter b-b wrapper-md">
       <div class="row">
         <div class="col-sm-3 col-xs-6">
-          <h1 class="m-n font-thin h3 ">Ajustes</h1>
-          <!-- <small class="text-muted">...</small> -->
+          <h1 class="m-n font-thin h4 ">Ajustes</h1>
         </div>
-
       </div>
     </div>
-
-<div class="container "   >
-    <div class="">
-  <div class="row" >
-    <div class="">
-      <tabset class="tab-container">
-        
-    
+  
+       <tabset class="tab-container">   
         <tab>
         <tab-heading>
-             <h1 class="m-n font-thin h3 "><b><i class="fa fa-hospital-o"></i> Clínica / Consultorio</b></h1>
+             <h1 class="m-n font-thin h4 "><b><i class="fa fa-hospital-o"></i> Clínica / Consultorio</b></h1>
           </tab-heading>
         <div class="">
             <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
      
-      <!-- / tasks -->
-
-
-
-
-
-
-      <!-- #####################################################/ -->
-     
-      <!-- tasks -->
+    
       <div class="row"  ng-controller="XeditableCtrl">
+       <div class="col-sm-4">
+     <div class="panel-body" >
+          <div class="clearfix text-center m-t">
+            <div class="inline">
+           <!--    <div ui-jq="easyPieChart" ui-options="{
+                    percent: 75,
+                    lineWidth: 5,
+                    trackColor: '{{app.color.dark}}',
+                    barColor: '{{app.color.azulOscuro}}',
+                    scaleColor: false,
+                    color: '{{app.color.dark}}',
+                    size: 200,
+                    lineCap: 'butt',
+                    rotate: -90,
+                    animate: 1000
+                  }">
+               
+
+              </div> -->
+               <div class="avatar " style="border-radius: 0px;">
+                  <img src="img/clinic.jpg" class="img-circle" style="border-radius: 20px;" alt="...">
+                 
+
+                 
+                </div>
+               <div style="padding-bottom: 30px;">
+               <br/>
+                     <button class="btn btn-rounded btn-xs btn-icon btn-default pull-right" style="
+ vertical-align: top;
+" ng-click="okAprobacion()"><i class="  icon-magnifier  fa-1x"></i></button>
+                  </div>
+              <br/>
+              <div class="h4 m-t m-b-xs" style="font-size: 20px;">{{user.nombres}} {{user.apellidos}}</div>
+              <!-- <small class="text-muted m-b">{{user.profesion}}</small> -->
+            </div>                      
+          </div>
+        </div>
+  </div>
        <div class="col-sm-8 " >
           <div class="no-border">
-            <!-- <div class="panel-heading font-bold">Controls</div> -->
+        
             <div class="panel-body">
               <div class="form-horizontal">
               <div class="row">
@@ -80,32 +96,7 @@
                       <a editable-text="cuenta.nRegistro" ng-model="cuenta.nRegistro" style="font-size: 20px;">{{ cuenta.nRegistro || 'vacio' }}</a>
                     </div>
                   </div>
-                </div>
-               
-               <!--  <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Nacionalidad:</label>
-                  <div class="col-sm-4">
-                    <p class="form-control-static">
-                      <a editable-select="cuenta.nacionalidad"  style="font-size: 20px;" e-ng-options="s.value as s.text for s in nacionalidades">
-                        {{ showNacionalidad(cuenta) }}
-                      </a>
-                    </p>
-                  </div>
-                </div> -->
-              <!--    <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Identificación:</label>
-                  <div class="col-sm-4">
-                   <p class="form-control-static">
-                     <a editable-number="cuenta.identificacion" e-min="18">{{ cuenta.identificacion || 'vacio' }}
-                     </a>
-
-                     </p> 
-                  </div>
-                </div> -->
-
-
-                 
-
+                </div>          
                     <div class="form-group" style="margin-bottom: 0px;">
                   <label class="col-sm-5 control-label" style="font-size: 20px;">Teléfono:</label>
                   <div class="col-sm-4">
@@ -133,9 +124,6 @@
                   </div>
                 </div>
               
-            
-           
-               
                  <div class="form-group" style="margin-bottom: 0px;">
                   <label class="col-sm-5 control-label" style="font-size: 20px;">Dirección:</label>
                   <div class="col-sm-6">
@@ -148,12 +136,6 @@
                 </div>
               
 
-                 
-
-
-               
-
-
               </div>
 
 
@@ -163,169 +145,89 @@
           </div>
        </div>  
       </div>
-      <!-- / tasks -->
     </div>
           </div>
         </tab>
         <tab>
         <tab-heading>
-               <h1 class="m-n font-thin h3 " ><b><i class="fa  fa-user-md"></i> Especialistas</b></h1>
+               <h1 class="m-n font-thin h4 " ><b><i class="fa  fa-user-md"></i> Especialistas</b></h1>
           </tab-heading>
         <div class="">
-             <div class="" ng-controller="FlotChartDemoCtrl">
+             <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
      
-      <!-- / tasks -->
-
-      <!-- tasks -->
-      <div class="row"  ng-controller="XeditableCtrl">
-       <div class="col-sm-8 " >
-          <div class="no-border">
-            <!-- <div class="panel-heading font-bold">Controls</div> -->
-            <div class="panel-body">
-              <div class="form-horizontal">
-              <div class="row">
-                <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Nombre / Razón Social</label>  
-                  <div class="col-sm-4">
-                    <div class="form-control-static">
-                      <a editable-text="cuenta.nombreRazon" ng-model="cuenta.nombreRazon" style="font-size: 20px;">{{ cuenta.nombreRazon || 'vacio' }}</a>
-                    </div>
-                  </div>
-                </div>
-                 <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Identificador:</label>
-                  <div class="col-sm-6">
-                    <p class="form-control-static">
-                      <a editable-radiolist="cuenta.identificador" e-ng-options="s.value as s.text for s in identificadores"  style="font-size: 20px;">
-                        {{ showIdentificadores() }}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                 <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Nro Registro:</label>  
-                  <div class="col-sm-4">
-                    <div class="form-control-static">
-                      <a editable-text="cuenta.nRegistro" ng-model="cuenta.nRegistro" style="font-size: 20px;">{{ cuenta.nRegistro || 'vacio' }}</a>
-                    </div>
-                  </div>
-                </div>
-               
-               <!--  <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Nacionalidad:</label>
-                  <div class="col-sm-4">
-                    <p class="form-control-static">
-                      <a editable-select="cuenta.nacionalidad"  style="font-size: 20px;" e-ng-options="s.value as s.text for s in nacionalidades">
-                        {{ showNacionalidad(cuenta) }}
-                      </a>
-                    </p>
-                  </div>
-                </div> -->
-              <!--    <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Identificación:</label>
-                  <div class="col-sm-4">
-                   <p class="form-control-static">
-                     <a editable-number="cuenta.identificacion" e-min="18">{{ cuenta.identificacion || 'vacio' }}
-                     </a>
-
-                     </p> 
-                  </div>
-                </div> -->
-
-
-                 
-
-                    <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Teléfono:</label>
-                  <div class="col-sm-4">
-                    <p class="form-control-static">
-                     <a editable-tel="cuenta.telefono" e-pattern="\d{3}\-\d{2}\-\d{2}" e-title="xxx-xx-xx">{{ cuenta.telefono || 'error' }}</a>
-                    </p>
-                  </div>
-                </div>
-         
-                 <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Celular:</label>
-                  <div class="col-sm-4">
-                    <p class="form-control-static">
-                     <a editable-tel="cuenta.movil" e-pattern="\d{3}\-\d{7}" e-title="xxx-xxxxxxx">{{ cuenta.movil || 'error' }}</a>
-                    </p>
-                  </div>
-                </div>
-            
-                  <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Email:</label>
-                  <div class="col-sm-4">
-                    <p class="form-control-static">
-                   <a editable-email="cuenta.email">{{ cuenta.email || 'vacio' }}</a>
-                    </p>
-                  </div>
-                </div>
-              
-            
-           
-               
-                 <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Dirección:</label>
-                  <div class="col-sm-6">
-                    <p class="form-control-static">
-                      <a editable-textarea="cuenta.direccion" e-rows="3"  style="font-size: 20px;">
-                        {{ cuenta.direccion || 'vacio' }}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              
-
-                 
-
-
-               
-
-
-              </div>
-
-
-
-              </div>
-            </div>
-          </div>
-       </div>  
-      </div>
-      <!-- / tasks -->
+  texto
     </div>
           </div>
         </tab>
-       <!--  <tab>
-        <tab-heading>
-   Tratamientos
-          </tab-heading>
-           <div class="panel panel-default">
-            
-          </div>
-        </tab>
-       
-        <tab>
-        <tab-heading>
-   Alim.
-          </tab-heading>
-        <div class="panel panel-default">
-           
-          </div>
-        </tab> -->
-      </tabset>
-     </div>
-    </div>
+      
 
-</div>
-</div>
-
-    <!-- / main header -->
+         <tab>
+        <tab-heading>
+             <h1 class="m-n font-thin h4 "><b><i class="fa fa-magic"></i> Tratamientos</b></h1>
+          </tab-heading>
+        <div class="">
+            <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+     
     
-  
+     texto
+    </div>
+          </div>
+        </tab>
+
+        <!-- ##############################################3  -->
+
+  <tab>
+        <tab-heading>
+             <h1 class="m-n font-thin h4 "><b><i class="icon-users "></i> Usuarios</b></h1>
+          </tab-heading>
+        <div class="">
+            <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+     
+    
+      texto
+    </div>
+          </div>
+        </tab>
+<!-- ######################################################### -->
+  <tab>
+        <tab-heading>
+             <h1 class="m-n font-thin h4 "><b><i class="fa fa-tasks "></i> Especialidades</b></h1>
+          </tab-heading>
+        <div class="">
+            <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+     
+    
+      texto
+    </div>
+          </div>
+        </tab>
+        <!-- ######################################################### -->
+  <tab>
+        <tab-heading>
+             <h1 class="m-n font-thin h4 "><b><i class="fa fa-gears "></i> Otros ajustes</b></h1>
+          </tab-heading>
+        <div class="">
+            <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+     
+    
+    texto
+    </div>
+          </div>
+        </tab>
+        <!-- ################################################## -->
+      </tabset>
+   
   </div>
-  <!-- / main -->
-  <!-- right col -->
- 
-  <!-- / right col -->
+  
+
 </div>
+
+
+
+
+
+
+
+
+
+

@@ -4788,6 +4788,7 @@ a.text-#000000:hover {
   border-radius: 500px;
 }
 
+
 .avatar img {
   width: 100%;
   border-radius: 500px;
@@ -4917,6 +4918,10 @@ a.text-#000000:hover {
 .thumb-xl {
   display: inline-block;
   width: 200px;
+}
+.thumb-xl2 {
+  display: inline-block;
+  width: 400px;
 }
 
 .thumb-lg {
