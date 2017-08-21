@@ -1,5 +1,5 @@
-app.controller('XeditableCtrl', ['$scope', '$filter', '$http', 'editableOptions', 'editableThemes', 
-  function($scope, $filter, $http, editableOptions, editableThemes){
+app.controller('XeditableCtrl', ['$scope', '$filter',  '$http', 'editableOptions', 'editableThemes','$modal','MyService','toaster',
+  function($scope, $filter, $http, editableOptions,  editableThemes, $modal, MyService,toaster){
     editableThemes.bs3.inputClass = 'input-sm';
     editableThemes.bs3.buttonsClass = 'btn-sm';
     editableOptions.theme = 'bs3';
@@ -22,7 +22,7 @@ $scope.app={
 
 
 
-'#3a3f51';
+// '#3a3f51';
     $scope.html5 = {
       email: 'email@example.com',
       tel: '123-45-67',
@@ -51,21 +51,32 @@ $scope.app={
      //  remember: false,
      //  profesion: 'Profesion'
     }; 
-    $scope.cuenta = {
-      nombreRazon:'Clinica / Consultorio',
-      nRegistro:'J-00000000-0',
-      telefono: '(000)-000-0000',
-      movil: '(000)-000-0000',
-      email: 'email@email.com',
-      // telefono: 'awesome',
-      direccion: 'Dirección',
-      desc: 'Dirección',
-      nacionalidad:'V',
-      status: 1,
-      identificador: 'RIF',
-      remember: false,
-      profesion: 'Profesion'
-    }; 
+    $scope.cuenta=[];
+    var identificador = MyService.data.idUsuarioCuenta;
+
+ 
+   $scope.cargaDatos=function(){
+      $http.get('http://54.202.62.62:1349/useryii/'+identificador).success(function(respuesta){        
+        item=respuesta;
+        $scope.cuenta=item;
+      });
+   };
+   $scope.cargaDatos();
+    // $scope.cuenta = {
+    //   // nombreRazon:'Clinica / Consultorio',
+    //   // nRegistro:'J-00000000-0',
+    //   // telefono: '(000)-000-0000',
+    //   // movil: '(000)-000-0000',
+    //   // email: 'email@email.com',
+    //   // // telefono: 'awesome',
+    //   // direccion: 'Dirección',
+    //   // desc: 'Dirección',
+    //   // nacionalidad:'V',
+    //   // status: 1,
+    //   // identificador: 'RIF',
+    //   // remember: false,
+    //   // profesion: 'Profesion'
+    // }; 
 
     $scope.statuses = [
       {value: 1, text: 'Activo'},
@@ -82,10 +93,64 @@ $scope.app={
       {value: 'M', text: 'mujer'}
     ];
      $scope.identificadores = [
-      {value: 'RIF', text: 'Registro de Información Fiscal'},
-      {value: 'RUF', text: 'Registro Único Federado'},
+      {value: 'RIF', text: 'Registro de Información Fiscal (RIF)'},
+      {value: 'RUF', text: 'Registro Único Tributario (RUT)'},
       {value: 'OTRO', text: 'Otro'}
     ];
+
+     $scope.toaster = {
+      typeCuenta: 'success',
+      textCuenta: 'Datos de cuenta actualizados con éxito',
+      titleCuenta: 'Exito'
+    };
+
+     $scope.popCuenta = function(){
+      toaster.pop($scope.toaster.typeCuenta, $scope.toaster.titleCuenta, $scope.toaster.textCuenta);
+    };
+    $scope.openFacebook=function(item){
+    MyService.data.cuentaFacebook = item.cuentaF;
+
+  var item=[];
+  $scope.items =[];
+  var dato="";
+  var datosCuenta="";
+  var modalInstance = $modal.open({
+    templateUrl: 'modalFacebook.html',
+    controller: 'ModalInstanceCtrl',
+    size: 'sm',
+    resolve: {
+
+           dato: function  () {
+            return item;
+            // body...
+          },
+           datosCuenta: function  () {
+            return datosCuenta;
+            // body...
+          },
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+    modalInstance.result.then(function (selectedItem,timeout) {
+      }, function () {
+        $scope.cargaDatos();
+    });
+     
+
+
+
+};
+
+    $scope.save=function(item){
+      var user = item;
+      var identif = item.id;
+      $http.put('http://54.202.62.62:1349/useryii/'+identif, user).success(function(data){
+        $scope.popCuenta();
+        // $state.go('apps.capgestionar'); 
+        });
+    };
 
     $scope.showStatus = function() {
       var selected = $filter('filter')($scope.statuses, {value: $scope.user.status});

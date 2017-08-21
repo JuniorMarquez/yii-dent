@@ -1,14 +1,21 @@
 <style>
   /*.app {  background-color: #3a3f51;}*/
 </style>
-<script type="text/ng-template" id="modalNuevoPaciente.html">
-  <div ng-include="'tpl/modalNuevoPaciente.html'"></div>
+<script type="text/ng-template" id="modalFacebook.html">
+  <div ng-include="'tpl/modalFacebook.html'"></div>
+</script>
+<script type="text/ng-template" id="modalInstagram.html">
+  <div ng-include="'tpl/modalInstagram.html'"></div>
+</script>
+<script type="text/ng-template" id="modalTwitter.html">
+  <div ng-include="'tpl/modalTwitter.html'"></div>
 </script>
 <div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
     app.settings.asideFolded = false; 
     app.settings.asideDock = false;">
 
   <div class="col" >
+
     <div class="bg-light lter b-b wrapper-md">
       <div class="row">
         <div class="col-sm-3 col-xs-6">
@@ -16,138 +23,131 @@
         </div>
       </div>
     </div>
-  
-       <tabset class="tab-container">   
-        <tab>
+      <toaster-container toaster-options="{'position-class': 'toast-bottom-right', 'showMethod': 'show', 'close-button':true,'progressBar':true,'closeButton':false}"></toaster-container>
+    <tabset class="tab-container">   
+      <tab>
         <tab-heading>
-             <h1 class="m-n font-thin h4 "><b><i class="fa fa-hospital-o"></i> Clínica / Consultorio</b></h1>
-          </tab-heading>
+          <h1 class="m-n font-thin h4 "><b><i class="fa fa-hospital-o"></i> Clínica / Consultorio</b></h1>
+        </tab-heading>
         <div class="">
-            <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
-     
-    
-      <div class="row"  ng-controller="XeditableCtrl">
-       <div class="col-sm-4">
-     <div class="panel-body" >
-          <div class="clearfix text-center m-t">
-            <div class="inline">
-           <!--    <div ui-jq="easyPieChart" ui-options="{
-                    percent: 75,
-                    lineWidth: 5,
-                    trackColor: '{{app.color.dark}}',
-                    barColor: '{{app.color.azulOscuro}}',
-                    scaleColor: false,
-                    color: '{{app.color.dark}}',
-                    size: 200,
-                    lineCap: 'butt',
-                    rotate: -90,
-                    animate: 1000
-                  }">
-               
-
-              </div> -->
-               <div class="avatar " style="border-radius: 0px;">
-                  <img src="img/clinic.jpg" class="img-circle" style="border-radius: 20px;" alt="...">
-                 
-
-                 
-                </div>
-               <div style="padding-bottom: 30px;">
-               <br/>
-                     <button class="btn btn-rounded btn-xs btn-icon btn-default pull-right" style="
- vertical-align: top;
-" ng-click="okAprobacion()"><i class="  icon-magnifier  fa-1x"></i></button>
+          <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">  
+            <div class="row"  ng-controller="XeditableCtrl">
+             <div class="col-sm-4">
+              <div class="panel-body" >
+                <div class="clearfix text-center m-t">
+                  <div class="inline">
+                    <div class="avatar " style="border-radius: 0px;">
+                      <img src="img/clinic.jpg" class="img-circle" style="border-radius: 20px;" alt="...">
+                    </div>
+                  <div>
+                    <br/>
+                    <div class="" style="align-content: center;" >
+                      <button class="btn btn-rounded btn-xs btn-icon btn-default pull-right" style="vertical-align: top;" ng-click="okAprobacion()"><i class="  icon-magnifier  fa-1x"></i></button>
+                    </div>
+                    <div ng-controller="PopoverDemoCtrl" class="m-b" ui-refresh="cuenta">
+                      <div class="row">
+                        <div class="col-sm-12">
+                        <br/>
+                          <button popover="{{cuenta.cuentaI}}" popover-trigger="mouseenter" class="btn btn-rounded btn-lg btn-icon btn-default " style="
+                           vertical-align: top;
+                          " ng-click="okAprobacion()"><i class="fa fa-instagram  fa-1x"></i></button>
+                          <button popover="{{cuenta.cuentaT}}" popover-trigger="mouseenter" class="btn btn-rounded btn-lg btn-icon btn-default " style="
+                           vertical-align: top;
+                          " ng-click="okAprobacion()"><i class="fa fa-twitter  fa-1x"></i></button>
+                          <button popover="{{cuenta.cuentaF}}" popover-trigger="mouseenter" class="btn btn-rounded btn-lg btn-icon btn-default " style="
+                           vertical-align: top;
+                          " ng-click="openFacebook(cuenta)"><i class="fa fa-facebook  fa-1x font-bold"></i></button>
+                          <button popover="Ubicación!" popover-trigger="mouseenter" class="btn btn-rounded btn-lg btn-icon btn-default " style="
+                           vertical-align: top;
+                          " ng-click="okAprobacion()"><i class=" icon-pointer   fa-1x font-bold" popover-placement="top"  popover-trigger="mouseenter"  popover="Ubicacion"  class="btn btn-default"></i></button>
+                        </div>  
+                      </div>
+                    </div>     
                   </div>
-              <br/>
-              <div class="h4 m-t m-b-xs" style="font-size: 20px;">{{user.nombres}} {{user.apellidos}}</div>
-              <!-- <small class="text-muted m-b">{{user.profesion}}</small> -->
-            </div>                      
+                  <br/>
+                    <div class="h4 m-t m-b-xs" style="font-size: 20px;">{{user.nombres}} {{user.apellidos}}</div>
+                    </div>                      
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-8 " >
+                <div class="no-border">
+                  <div class="panel-body">
+                    <div class="form-horizontal">
+                    <div class="row">
+                      <div class="form-group" style="margin-bottom: 0px;">
+                        <label class="col-sm-5 control-label" style="font-size: 20px;">Nombre / Razón Social</label>  
+                        <div class="col-sm-4">
+                          <div class="form-control-static">
+                            <a editable-text="cuenta.nombreRazon" ng-model="cuenta.nombreRazon" style="font-size: 20px;">{{ cuenta.nombreRazon || 'vacio' }}</a>
+                          </div>
+                        </div>
+                      </div>
+                       <div class="form-group" style="margin-bottom: 0px;">
+                        <label class="col-sm-5 control-label" style="font-size: 20px;">Identificador:</label>
+                       <div class="col-sm-6">
+                      <p class="form-control-static">
+                        <a editable-select="cuenta.identificador"  style="font-size: 20px;" e-ng-options="s.value as s.text for s in identificadores">
+                          {{ showIdentificadores(user) || 'Seleccione' }}
+                        </a>
+                      </p>
+                    </div>
+                      </div>
+                       <div class="form-group" style="margin-bottom: 0px;">
+                        <label class="col-sm-5 control-label" style="font-size: 20px;">Nro Registro:</label>  
+                        <div class="col-sm-4">
+                          <div class="form-control-static">
+                            <a editable-text="cuenta.nRegistro" ng-model="cuenta.nRegistro" style="font-size: 20px;">{{ cuenta.nRegistro || 'vacio' }}</a>
+                          </div>
+                        </div>
+                      </div>          
+                          <div class="form-group" style="margin-bottom: 0px;">
+                        <label class="col-sm-5 control-label" style="font-size: 20px;">Teléfono:</label>
+                        <div class="col-sm-4">
+                          <p class="form-control-static">
+                           <a editable-tel="cuenta.telefono" e-pattern="\d{3}\-\d{2}\-\d{2}" e-title="xxx-xx-xx">{{ cuenta.telefono || 'error' }}</a>
+                          </p>
+                        </div>
+                      </div>
+               
+                       <div class="form-group" style="margin-bottom: 0px;">
+                        <label class="col-sm-5 control-label" style="font-size: 20px;">Celular:</label>
+                        <div class="col-sm-4">
+                          <p class="form-control-static">
+                           <a editable-tel="cuenta.movil" e-pattern="\d{3}\-\d{7}" e-title="xxx-xxxxxxx">{{ cuenta.movil || 'error' }}</a>
+                          </p>
+                        </div>
+                      </div>
+                  
+                        <div class="form-group" style="margin-bottom: 0px;">
+                        <label class="col-sm-5 control-label" style="font-size: 20px;">Email:</label>
+                        <div class="col-sm-4">
+                          <p class="form-control-static">
+                         <a editable-email="cuenta.emailEmpresa">{{ cuenta.emailEmpresa || 'vacio' }}</a>
+                          </p>
+                        </div>
+                      </div>
+                    
+                       <div class="form-group" style="margin-bottom: 0px;">
+                        <label class="col-sm-5 control-label" style="font-size: 20px;">Dirección:</label>
+                        <div class="col-sm-6">
+                          <p class="form-control-static">
+                            <a editable-textarea="cuenta.direccion" e-rows="3"  style="font-size: 20px;">
+                              {{ cuenta.direccion || 'vacio' }}
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn m-b-xs btn-default2 btn-rounded pull-right " ng-click="save(cuenta)">Guardar cambios</button>
+                  </div>
+                </div>
+              </div>
+            </div>  
           </div>
         </div>
-  </div>
-       <div class="col-sm-8 " >
-          <div class="no-border">
-        
-            <div class="panel-body">
-              <div class="form-horizontal">
-              <div class="row">
-                <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Nombre / Razón Social</label>  
-                  <div class="col-sm-4">
-                    <div class="form-control-static">
-                      <a editable-text="cuenta.nombreRazon" ng-model="cuenta.nombreRazon" style="font-size: 20px;">{{ cuenta.nombreRazon || 'vacio' }}</a>
-                    </div>
-                  </div>
-                </div>
-                 <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Identificador:</label>
-                  <div class="col-sm-6">
-                    <p class="form-control-static">
-                      <a editable-radiolist="cuenta.identificador" e-ng-options="s.value as s.text for s in identificadores"  style="font-size: 20px;">
-                        {{ showIdentificadores() }}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                 <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Nro Registro:</label>  
-                  <div class="col-sm-4">
-                    <div class="form-control-static">
-                      <a editable-text="cuenta.nRegistro" ng-model="cuenta.nRegistro" style="font-size: 20px;">{{ cuenta.nRegistro || 'vacio' }}</a>
-                    </div>
-                  </div>
-                </div>          
-                    <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Teléfono:</label>
-                  <div class="col-sm-4">
-                    <p class="form-control-static">
-                     <a editable-tel="cuenta.telefono" e-pattern="\d{3}\-\d{2}\-\d{2}" e-title="xxx-xx-xx">{{ cuenta.telefono || 'error' }}</a>
-                    </p>
-                  </div>
-                </div>
-         
-                 <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Celular:</label>
-                  <div class="col-sm-4">
-                    <p class="form-control-static">
-                     <a editable-tel="cuenta.movil" e-pattern="\d{3}\-\d{7}" e-title="xxx-xxxxxxx">{{ cuenta.movil || 'error' }}</a>
-                    </p>
-                  </div>
-                </div>
-            
-                  <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Email:</label>
-                  <div class="col-sm-4">
-                    <p class="form-control-static">
-                   <a editable-email="cuenta.email">{{ cuenta.email || 'vacio' }}</a>
-                    </p>
-                  </div>
-                </div>
-              
-                 <div class="form-group" style="margin-bottom: 0px;">
-                  <label class="col-sm-5 control-label" style="font-size: 20px;">Dirección:</label>
-                  <div class="col-sm-6">
-                    <p class="form-control-static">
-                      <a editable-textarea="cuenta.direccion" e-rows="3"  style="font-size: 20px;">
-                        {{ cuenta.direccion || 'vacio' }}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              
-
-              </div>
-
-
-
-              </div>
-            </div>
-          </div>
-       </div>  
       </div>
-    </div>
-          </div>
-        </tab>
+      </tab>
         <tab>
         <tab-heading>
                <h1 class="m-n font-thin h4 " ><b><i class="fa  fa-user-md"></i> Especialistas</b></h1>

@@ -87,6 +87,7 @@
       //console.log('Dropdown is now: ', open);
     };
 
+
     $scope.toggleDropdown = function($event) {
       $event.preventDefault();
       $event.stopPropagation();
@@ -100,6 +101,12 @@
       item: $scope.items[0]
     };
 
+
+    if (MyService.data.cuentaFacebook){
+      $scope.item=[];
+      $scope.item.cuentaF=MyService.data.cuentaFacebook;
+    }
+
   $scope.toaster = {
     type: 'success',
     text: 'Paciente agregado con exito',
@@ -111,6 +118,20 @@
  $scope.pop = function(){
     toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
   };
+
+$scope.okFacebook=function(item){
+  var cuenta = item;
+  // alert(""+item.cuentaF);
+
+  // paciente.idUsuarioCuenta=MyService.data.idUsuarioCuenta;
+  var identificador = MyService.data.idUsuarioCuenta;
+ $http.put('http://54.202.62.62:1349/useryii/'+identificador, {cuentaF:item.cuentaF}).success(function(data){
+          // $scope.pop();
+          // $state.go('apps.capgestionar'); 
+      });
+$modalInstance.close($scope.selected.item);
+};
+
 
 $scope.guardar=function(item){
   var paciente = item;
