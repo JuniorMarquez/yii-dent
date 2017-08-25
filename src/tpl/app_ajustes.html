@@ -1,6 +1,29 @@
 <style>
   /*.app {  background-color: #3a3f51;}*/
 </style>
+<!--   <style>
+    body {
+      padding: 15px;
+    }
+
+    .select2 > .select2-choice.ui-select-match {
+      /* Because of the inclusion of Bootstrap */
+      height: 29px;
+    }
+
+    .selectize-control > .selectize-dropdown {
+      top: 36px;
+    }
+    
+    .select2-search {
+      display: none;
+    }
+  </style>
+  <style>
+  .select2-search {
+      display: none;
+    }
+  </style> -->
 <script type="text/ng-template" id="modalFacebook.html">
   <div ng-include="'tpl/modalFacebook.html'"></div>
 </script>
@@ -50,10 +73,10 @@
                         <br/>
                           <button popover="{{cuenta.cuentaI}}" popover-trigger="mouseenter" class="btn btn-rounded btn-lg btn-icon btn-default " style="
                            vertical-align: top;
-                          " ng-click="okAprobacion()"><i class="fa fa-instagram  fa-1x"></i></button>
+                          " ng-click="openInstagram(cuenta)"><i class="fa fa-instagram  fa-1x"></i></button>
                           <button popover="{{cuenta.cuentaT}}" popover-trigger="mouseenter" class="btn btn-rounded btn-lg btn-icon btn-default " style="
                            vertical-align: top;
-                          " ng-click="okAprobacion()"><i class="fa fa-twitter  fa-1x"></i></button>
+                          " ng-click="openTwitter(cuenta)""><i class="fa fa-twitter  fa-1x"></i></button>
                           <button popover="{{cuenta.cuentaF}}" popover-trigger="mouseenter" class="btn btn-rounded btn-lg btn-icon btn-default " style="
                            vertical-align: top;
                           " ng-click="openFacebook(cuenta)"><i class="fa fa-facebook  fa-1x font-bold"></i></button>
@@ -155,7 +178,14 @@
         <div class="">
              <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
      
-  texto
+
+  <!-- <ui-select ng-model="language.selected" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
+    <ui-select-match placeholder="Select a language"><img ng-src="{{ $select.selected.url }}" /> {{$select.selected.name}}</ui-select-match>
+    <ui-select-choices repeat="lang in language_list">
+      <img ng-src="{{ lang.url }}" />
+      <div ng-bind-html="lang.name" style="display: inline"></div>
+    </ui-select-choices>
+  </ui-select> -->
     </div>
           </div>
         </tab>
@@ -202,18 +232,7 @@
           </div>
         </tab>
         <!-- ######################################################### -->
-  <tab>
-        <tab-heading>
-             <h1 class="m-n font-thin h4 "><b><i class="fa fa-gears "></i> Otros ajustes</b></h1>
-          </tab-heading>
-        <div class="">
-            <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
-     
-    
-    texto
-    </div>
-          </div>
-        </tab>
+ 
         <!-- ################################################## -->
       </tabset>
    

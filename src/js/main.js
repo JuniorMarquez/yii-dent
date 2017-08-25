@@ -12,7 +12,7 @@ angular.module('app')
 
       // config
       $scope.app = {
-        name: 'Yii-dent',
+        name: 'Smile',
         version: '1.0.0',
         // for chart colors
         color: {

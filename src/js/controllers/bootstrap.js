@@ -106,6 +106,14 @@
       $scope.item=[];
       $scope.item.cuentaF=MyService.data.cuentaFacebook;
     }
+    if (MyService.data.cuentaInstagram){
+      $scope.item=[];
+      $scope.item.cuentaI=MyService.data.cuentaInstagram;
+    }
+    if (MyService.data.cuentaTwitter){
+      $scope.item=[];
+      $scope.item.cuentaT=MyService.data.cuentaTwitter;
+    }
 
   $scope.toaster = {
     type: 'success',
@@ -131,6 +139,35 @@ $scope.okFacebook=function(item){
       });
 $modalInstance.close($scope.selected.item);
 };
+
+
+
+$scope.okInstagram=function(item){
+  var cuenta = item;
+  // alert(""+item.cuentaF);
+
+  // paciente.idUsuarioCuenta=MyService.data.idUsuarioCuenta;
+  var identificador = MyService.data.idUsuarioCuenta;
+ $http.put('http://54.202.62.62:1349/useryii/'+identificador, {cuentaI:item.cuentaI}).success(function(data){
+          // $scope.pop();
+          // $state.go('apps.capgestionar'); 
+      });
+$modalInstance.close($scope.selected.item);
+};
+
+$scope.okTwitter=function(item){
+  var cuenta = item;
+  // alert(""+item.cuentaF);
+
+  // paciente.idUsuarioCuenta=MyService.data.idUsuarioCuenta;
+  var identificador = MyService.data.idUsuarioCuenta;
+ $http.put('http://54.202.62.62:1349/useryii/'+identificador, {cuentaT:item.cuentaT}).success(function(data){
+          // $scope.pop();
+          // $state.go('apps.capgestionar'); 
+      });
+$modalInstance.close($scope.selected.item);
+};
+
 
 
 $scope.guardar=function(item){

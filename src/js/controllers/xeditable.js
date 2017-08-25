@@ -137,11 +137,74 @@ $scope.app={
       }, function () {
         $scope.cargaDatos();
     });
-     
-
-
-
 };
+
+
+
+ $scope.openInstagram=function(item){
+    MyService.data.cuentaInstagram = item.cuentaI;
+
+  var item=[];
+  $scope.items =[];
+  var dato="";
+  var datosCuenta="";
+  var modalInstance = $modal.open({
+    templateUrl: 'modalInstagram.html',
+    controller: 'ModalInstanceCtrl',
+    size: 'sm',
+    resolve: {
+
+           dato: function  () {
+            return item;
+            // body...
+          },
+           datosCuenta: function  () {
+            return datosCuenta;
+            // body...
+          },
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+    modalInstance.result.then(function (selectedItem,timeout) {
+      }, function () {
+        $scope.cargaDatos();
+    });
+};
+
+ $scope.openTwitter=function(item){
+    MyService.data.cuentaTwitter = item.cuentaT;
+
+  var item=[];
+  $scope.items =[];
+  var dato="";
+  var datosCuenta="";
+  var modalInstance = $modal.open({
+    templateUrl: 'modalTwitter.html',
+    controller: 'ModalInstanceCtrl',
+    size: 'sm',
+    resolve: {
+
+           dato: function  () {
+            return item;
+            // body...
+          },
+           datosCuenta: function  () {
+            return datosCuenta;
+            // body...
+          },
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+    modalInstance.result.then(function (selectedItem,timeout) {
+      }, function () {
+        $scope.cargaDatos();
+    });
+};
+
 
     $scope.save=function(item){
       var user = item;

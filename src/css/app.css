@@ -971,7 +971,7 @@ body {
   }
   .app-aside-fixed .aside-wrap {
     position: fixed;
-    top: 50px;
+    top: 0px;
     bottom: 0;
     left: 0;
     z-index: 1000;
@@ -982,7 +982,7 @@ body {
     position: relative;
     width: 217px;
     height: 100%;
-    margin-top: 90px;
+    /*margin-top: 90px;*/
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -1245,14 +1245,15 @@ html.bg {
 }
 
 .navi ul.nav li a {
+  height: 120px;
   position: relative;
   display: block;
-  padding: 10px 20px;
+  padding: 20px 19px;
   font-weight: normal;
   text-transform: none;
   -webkit-transition: background-color 0.2s ease-in-out 0s;
           transition: background-color 0.2s ease-in-out 0s;
-          border-radius: 45px;
+          border-radius: 65px;
           /*box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.22);*/
           /*sombra opciones*/
 }
@@ -2306,7 +2307,7 @@ fieldset[disabled] .btn-black.active {
 
 .settings {
   position: fixed;
-  top: 120px;
+  top: 200px;
   right: -240px;
   z-index: 1050;
   width: 240px;
@@ -3218,7 +3219,8 @@ fieldset[disabled] .i-checks input + i:before {
 
 .bg-black .nav > li > a:hover,
 .bg-black .nav > li > a:focus {
-  background-color: #d4e1e133;
+  /*background-color: #d4e1e133;*/ 
+  /*fondo icon*/
 }
 
 .bg-black .nav .open > a {
